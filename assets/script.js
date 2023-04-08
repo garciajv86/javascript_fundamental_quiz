@@ -53,28 +53,53 @@ function setTime() {
         }
         
     }, 1000)
-}
+};
 
 startQuiz.addEventListener("click", function() {
     
     setTime();
     hide.style.display = 'none';
     wrapper.style.display = 'flex';
-    h3El.innerHTML = questions[0].question;
-    choice1.innerHTML = questions[0].choices[0]
-    choice2.innerHTML = questions[0].choices[1]
-    choice3.innerHTML = questions[0].choices[2]
-    choice4.innerHTML = questions[0].choices[3]
     
 });
 
-choices.addEventListener("click", function(event){
-    if (event.target === choice4) {
-        h4El.innerHTML = "CORRECT!"
-        footer.style.display = 'flex';
+var i = 0;
 
-    } else {
-        h4El.innerHTML = "INCORRECT!"
-    }
+h3El.innerHTML = questions[i].question;
+choice1.innerHTML = questions[i].choices[0];
+choice2.innerHTML = questions[i].choices[1];
+choice3.innerHTML = questions[i].choices[2];
+choice4.innerHTML = questions[i].choices[3];
+
     
-})
+
+choices.addEventListener("click", function(event){
+
+
+    if (h3El.innerHTML === questions[0].question && event.target === choice4) {
+        h4El.innerHTML = "CORRECT!";
+        footer.style.display = 'flex';
+        i = 1;
+            
+    } else if (h3El.innerHTML === questions[1].question && event.target === choice3) {
+        h4El.innerHTML = "CORRECT!";
+        footer.style.display = 'flex';
+        i = 2;
+
+    } else if (h3El.innerHTML === questions[2].question && event.target === choice4) {
+        h4El.innerHTML = "CORRECT!";
+        footer.style.display = 'flex';
+        //i = 3
+    }else {
+        h4El.innerHTML = "INCORRECT!";
+        footer.style.display = 'flex';
+        secondsLeft -= 5;
+        i+=1
+             
+    }
+    h3El.innerHTML = questions[i].question;
+    choice1.innerHTML = questions[i].choices[0];
+    choice2.innerHTML = questions[i].choices[1];
+    choice3.innerHTML = questions[i].choices[2];
+    choice4.innerHTML = questions[i].choices[3];   
+});
