@@ -1,0 +1,25 @@
+:root {
+    --blue: #1e90ff
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 25px;
+}
+
+.scores {
+    color: var(--blue);
+    padding: 10px 0px 0px 10px;
+}
+
+.timer {
+    padding: 10px 10px 0px 0px;
+}
+
