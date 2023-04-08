@@ -23,3 +23,29 @@ header {
     padding: 10px 10px 0px 0px;
 }
 
+div #start-screen {
+    align-items: center;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    margin-top: 200px;
+}
+
+#start-screen p {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    background-color: var(--blue);
+    color: white;
+    margin: 20px auto 0px auto;
+    padding: 10px 20px 10px 20px;
+}
