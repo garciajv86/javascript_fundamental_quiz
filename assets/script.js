@@ -6,6 +6,22 @@ var secondsLeft = 61;
 var startQuiz = document.querySelector(".quiz");
 
 var choices = document.querySelector("#choices");
+// Variable to hide my Starter screen content
+var hide = document.querySelector('.hide');
+// Variable I can use to be able to display my questions and answers
+var wrapper = document.querySelector('.wrapper');
+var h3El = document.querySelector('#question-title');
+var choice1 = document.querySelector('.choice1');
+var choice2 = document.querySelector('.choice2');
+var choice3 = document.querySelector('.choice3');
+var choice4 = document.querySelector('.choice4');
+var allChoices = document.querySelector('#choices');
+var h4El = document.querySelector('h4')
+var footer = document.querySelector('footer');
+var score = document.querySelector('#score');
+var label = document.querySelector('label');
+var input = document.querySelector('input');
+var enterbtn = document.querySelector('#enter')
 
 // Array Object with questions and answers
 // Found this example in stack-overflow
@@ -27,28 +43,18 @@ var questions = [
         choices: ['Numbers and Strings', 'Other arrays', 'Booleans', 'All of the above'],
         answer: 4
     },
-
     {
-        question: "Game Over",
-        choices: ['1']
+        question: "GAME OVER",
+        choices: ['1','2','3','4']
     }
 
 ];
-// Variable to hide my Starter screen content
-var hide = document.querySelector('.hide');
-// Variable I can use to be able to display my questions and answers
-var wrapper = document.querySelector('.wrapper');
-var h3El = document.querySelector('#question-title');
-var choice1 = document.querySelector('.choice1');
-var choice2 = document.querySelector('.choice2');
-var choice3 = document.querySelector('.choice3');
-var choice4 = document.querySelector('.choice4');
-var h4El = document.querySelector('h4')
-var footer = document.querySelector('footer');
+var highScores = []
+
 // Variable to use for indexing
 var i = 0;
 
-//------------------------Logic Section--------------------------//
+//------------------------Functions Section--------------------------//
 
 function setTime() {
     // Time interval
@@ -61,11 +67,51 @@ function setTime() {
     }, 1000)
 };
 
-//function stopTime() {
-    //clearInterval(timerInterval);
-//};
+//Questions function
+function questionsFunc() {
 
+    if (h3El.innerHTML === questions[0].question && event.target === choice4) {
+        h4El.innerHTML = "CORRECT!";
+        footer.style.display = 'flex';
+        i = 1;       
+    } 
+    else if (h3El.innerHTML === questions[1].question && event.target === choice3) {
+        h4El.innerHTML = "CORRECT!";
+        footer.style.display = 'flex';
+        i = 2;
+    } 
+    else if (h3El.innerHTML === questions[2].question && event.target === choice4) {
+        h4El.innerHTML = "CORRECT!";
+        footer.style.display = 'flex';
+        i = 3
+    }
+    else if(i<3){
+        
+        h4El.innerHTML = "INCORRECT!";
+        footer.style.display = 'flex';
+        secondsLeft -= 10;
+        i+=1;        
+    }
+    h3El.innerHTML = questions[i].question;
+    choice1.innerHTML = questions[i].choices[0];
+    choice2.innerHTML = questions[i].choices[1];
+    choice3.innerHTML = questions[i].choices[2];
+    choice4.innerHTML = questions[i].choices[3]; 
+    console.log(i)
+};
 
+//Function for the enter initials form
+function formFunc () {
+    if(i == 2) {
+        allChoices.style.display = 'none';
+        enterbtn.style.display = 'flex';
+        label.style.display = 'flex';
+        input.style.display = 'flex';
+        score.textContent = 'Your score was: ' + secondsLeft;
+    };
+};
+
+//----------------------Event Listener Section-------------------------//
 
 startQuiz.addEventListener("click", function() {
 
@@ -79,42 +125,15 @@ startQuiz.addEventListener("click", function() {
     choice4.innerHTML = questions[i].choices[3];
     
 });
+
     
 choices.addEventListener("click", function(event){
-
-    if (h3El.innerHTML === questions[0].question && event.target === choice4) {
-        h4El.innerHTML = "CORRECT!";
-        footer.style.display = 'flex';
-        i = 1;
-            
-    } else if (h3El.innerHTML === questions[1].question && event.target === choice3) {
-        h4El.innerHTML = "CORRECT!";
-        footer.style.display = 'flex';
-        i = 2;
-
-    } else if (h3El.innerHTML === questions[2].question && event.target === choice4) {
-        h4El.innerHTML = "CORRECT!";
-        footer.style.display = 'flex';
-        i = 3;
+    
+    formFunc();
+    questionsFunc();
         
-        
-
-    }else {
-        h4El.innerHTML = "INCORRECT!";
-        footer.style.display = 'flex';
-        secondsLeft -= 10;
-        i+=1
-             
-    } if (i < 4) {
-        h3El.innerHTML = questions[i].question;
-        choice1.innerHTML = questions[i].choices[0];
-        choice2.innerHTML = questions[i].choices[1];
-        choice3.innerHTML = questions[i].choices[2];
-        choice4.innerHTML = questions[i].choices[3]; 
-        console.log(i)
-    }
-     
 });
+
 
 
 
