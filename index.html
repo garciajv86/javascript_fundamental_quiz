@@ -11,7 +11,7 @@
 <body>
     
     <header>
-        <div class="scores">View High-Scores</div>
+        <button class="btnscores">View High-Scores</button>
         <div class="timer">Time:<span id="time">0</span></div>
     </header>
 
@@ -29,7 +29,7 @@
         <div id="questions">
 
             <h3 id="question-title">Question Title</h3>
-            <p id="score"></p>
+            
             
             <div id="choices" class="choices">
 
@@ -43,18 +43,30 @@
         </div>
 
     </section>
-    <section>
+
+    <section class="formSection">
+        <h4>All Done!</h4>
+        <p id="score"></p>
         <form method="POST">
             <div class="input-group">
                 <label for="Initials">Enter Initials</label>
                 <input type="text" name="initials" id="initials" placeholder="Initials Here" />
             </div>
-            <button id="enter">Enter</button>
+            <button id="enter">Submit</button>
         </form>
     </section>
 
+    <section class="highScores">
+
+        <p class="allScoresTitle"><u>High Scores</u></p>
+        <div class="allScores"></div>
+        <button id="goBack">Go back</a></button>
+        <button id="clearHighScores">Clear HighScores</button>
+
+    </section>
+
     <footer>
-        <h4>Correct or Incorrect</h4>
+        <h5>Correct or Incorrect</h5>
     </footer>
 
 

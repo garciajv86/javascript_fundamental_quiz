@@ -14,9 +14,14 @@ header {
     font-size: 25px;
 }
 
-.scores {
-    color: var(--blue);
-    padding: 10px 0px 0px 10px;
+.btnscores {
+    display: flex;
+    background-color: white;
+    border-style: none;
+    color:blue;
+    font-size: 20px;
+    padding: 5px;
+    margin: 10px 0px 0px 10px;
 }
 
 .timer {
@@ -41,7 +46,7 @@ h2, #question-title {
     
 }
 
-button {
+section button {
     display: flex;
     justify-content: center;
     background-color: var(--blue);
@@ -65,12 +70,21 @@ footer {
 
 }
 
-h4 {
+section h4 {
+    display: none;
+    justify-content: center;
+    margin-top: 200px;
+    font-size: 35px;
+}
+
+footer h5 {
     border-top: 1px solid;
     width: 50%;
 }
 
 #score {
+    display: flex;
+    justify-content: center;
     font-size: 30px;
 }
 
@@ -89,4 +103,15 @@ input {
 
 #enter {
     display: none;
+}
+
+.allScoresTitle {
+    display: none;
+    justify-content: center;
+    font-size: 50px;
+}
+
+#goBack, #clearHighScores {
+    display: none;
+    
 }

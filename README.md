@@ -1,3 +1,10 @@
+# JavaScript Fundamentals Quiz
+
+## Description
+My task was to create a quiz focused on JavaScript related questions that is timed, and keeps records of the users high scores and initials so
+the user can gauge his/her progress compared to the users peers. I've learnt so much from this project, one of my biggest challenges I faced in this project
+was learning to use the local storage!
+
 ## User Story
 
 ```
