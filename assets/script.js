@@ -50,6 +50,8 @@ var questions = [
 
 ];
 var highScores = []
+var finalScore = []
+
 
 // Variable to use for indexing
 var i = 0;
@@ -69,6 +71,9 @@ function setTime() {
 
 //Questions function
 function questionsFunc() {
+
+    choices.addEventListener("click", function(){
+    
 
     if (h3El.innerHTML === questions[0].question && event.target === choice4) {
         h4El.innerHTML = "CORRECT!";
@@ -98,18 +103,23 @@ function questionsFunc() {
     choice3.innerHTML = questions[i].choices[2];
     choice4.innerHTML = questions[i].choices[3]; 
     console.log(i)
-};
+    
+})};
 
 //Function for the enter initials form
 function formFunc () {
+
+    choices.addEventListener("click", function(){
+            
     if(i == 2) {
         allChoices.style.display = 'none';
         enterbtn.style.display = 'flex';
         label.style.display = 'flex';
         input.style.display = 'flex';
         score.textContent = 'Your score was: ' + secondsLeft;
+        finalScore.push(secondsLeft);
     };
-};
+})};
 
 //----------------------Event Listener Section-------------------------//
 
@@ -127,12 +137,12 @@ startQuiz.addEventListener("click", function() {
 });
 
     
-choices.addEventListener("click", function(event){
+//choices.addEventListener("click", function(){
     
     formFunc();
     questionsFunc();
         
-});
+//});
 
 
 
