@@ -57,6 +57,7 @@ var questions = [
     }
 
 ];
+
 var finalScore = []
 
 
@@ -68,10 +69,11 @@ var i = 0;
 //------------------------Functions Section--------------------------//
 
 function setTime() {
+
     // Time interval
     setInterval(function() {
         
-        if(secondsLeft > 0 && i < 3) {
+        if (secondsLeft > 0 && i < 3) {
             secondsLeft--;
             timeEl.textContent = secondsLeft;
         }      
@@ -81,8 +83,6 @@ function setTime() {
 //Questions function
 function questionsFunc() {
 
-
-    // Delegate
     choices.addEventListener("click", function(event){
     
         
@@ -101,7 +101,7 @@ function questionsFunc() {
         footer.style.display = 'flex';
         i+=1;
     }
-    else if(i<3){
+    else if (i<3){
         
         h5El.innerHTML = "INCORRECT!";
         footer.style.display = 'flex';
@@ -115,7 +115,6 @@ function questionsFunc() {
     choice2.innerHTML = questions[i].choices[1];
     choice3.innerHTML = questions[i].choices[2];
     choice4.innerHTML = questions[i].choices[3]; 
-    console.log(i)
     
 })};
 
@@ -137,12 +136,14 @@ function formFunc () {
 })};
 
 function viewHighScores() {
+
     var scores = loadStorage();
+
     for(var i = 0; i< scores.length; i++) {
         var currentScore = scores[i];
         var initials = currentScore.initials;
         var score = currentScore.score;
-        var initialSpan = document.createElement('span');
+        var initialSpan = document.createElement('li');
         var scoreSpan = document.createElement('span');
         initialSpan.textContent = initials;
         scoreSpan.textContent = score;
@@ -156,11 +157,10 @@ function viewHighScores() {
 
 };
 
-var keyName = 'scores'
-
 // This is where we will retrieve the high scores
-function loadStorage(keyname) {
-    var highScores = localStorage.getItem(keyname);
+function loadStorage() {
+
+    var highScores = localStorage.getItem('scores');
     if(highScores == null) {
         return [];
     }
@@ -171,10 +171,10 @@ function loadStorage(keyname) {
 
 function updateStorage(new_entry) {
 
-    var scores = loadStorage(keyName);
+    var scores = loadStorage();
     var new_score = {
         initials: new_entry.initials,
-        score: new_entry.score
+        score: new_entry.score,
     }
     scores.push(new_score);
     localStorage.setItem('scores', JSON.stringify(scores));
@@ -208,7 +208,14 @@ goBack.addEventListener('click', function() {
 
     location.reload();
 
-});    
+});
+
+// Clear high scores button to erase local storage
+clearHighScores.addEventListener('click', function() {
+    
+    localStorage.removeItem('scores');
+    location.reload();
+})
 
 // Save initials and final score in local storage
 enterbtn.addEventListener("click", function() {

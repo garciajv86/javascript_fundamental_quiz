@@ -113,8 +113,15 @@ input {
 
 .allScores {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     font-size: 20px;
+    color:rgb(178, 51, 104);
+}
+
+.allScores li {
+    
+    padding: 15px 5px 5px 0px;
 }
 
 #goBack, #clearHighScores {
