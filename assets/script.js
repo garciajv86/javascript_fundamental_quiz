@@ -58,10 +58,6 @@ var questions = [
 
 ];
 
-var finalScore = []
-
-
-
 // Variable to use for indexing
 var i = 0;
 
@@ -130,7 +126,7 @@ function formFunc () {
         label.style.display = 'flex';
         input.style.display = 'flex';
         score.textContent = 'Your score was: ' + secondsLeft;
-        finalScore.push(secondsLeft);
+        
         
     };
 })};
@@ -169,12 +165,12 @@ function loadStorage() {
     }
 }; 
 
-function updateStorage(new_entry) {
+function updateStorage() {
 
     var scores = loadStorage();
     var new_score = {
-        initials: new_entry.initials,
-        score: new_entry.score,
+        initials: input.value,
+        score: secondsLeft,
     }
     scores.push(new_score);
     localStorage.setItem('scores', JSON.stringify(scores));
@@ -221,14 +217,9 @@ clearHighScores.addEventListener('click', function() {
 enterbtn.addEventListener("click", function() {
 
     // Save the initials and final score into local storage
-    var initials = localStorage.setItem('initials', input.value);
-    var fScore = localStorage.setItem("FinalScore", finalScore);
 
-    var object = {
-        initials: input.value,
-        score: secondsLeft,
-    }
-    updateStorage(object);
+    
+    updateStorage();
 
 
 
