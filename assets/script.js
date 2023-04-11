@@ -121,8 +121,8 @@ function questionsFunc() {
 //Function for the enter initials form
 function formFunc () {
 
-    choices.addEventListener("click", function(){
-            
+    choices.addEventListener("click", function(event){
+      event.preventDefault();      
     if(i == 2) {
         wrapper.style.display = 'none';
         h4El.style.display = 'flex';
