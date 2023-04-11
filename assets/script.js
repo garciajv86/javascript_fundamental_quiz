@@ -57,7 +57,6 @@ var questions = [
     }
 
 ];
-var highScores = ''
 var finalScore = []
 
 
@@ -82,9 +81,11 @@ function setTime() {
 //Questions function
 function questionsFunc() {
 
-    choices.addEventListener("click", function(){
-    
 
+    // Delegate
+    choices.addEventListener("click", function(event){
+    
+        
     if (h3El.innerHTML === questions[0].question && event.target === choice4) {
         h5El.innerHTML = "CORRECT!";
         footer.style.display = 'flex';
@@ -140,7 +141,7 @@ function viewHighScores() {
     for(var i = 0; i< scores.length; i++) {
         var currentScore = scores[i];
         var initials = currentScore.initials;
-        var score = currentScore.scores;
+        var score = currentScore.score;
         var initialSpan = document.createElement('span');
         var scoreSpan = document.createElement('span');
         initialSpan.textContent = initials;
@@ -149,15 +150,17 @@ function viewHighScores() {
         allScores.appendChild(scoreSpan);
     }
     hide.style.display = 'none';
-    wrapper.style.display = 'flex';
+    wrapper.style.display = 'none';
     h3El.innerHTML = questions[3].question;
     
 
 };
 
+var keyName = 'scores'
+
 // This is where we will retrieve the high scores
-function loadStorage() {
-    var highScores = localStorage.getItem('scores');
+function loadStorage(keyname) {
+    var highScores = localStorage.getItem(keyname);
     if(highScores == null) {
         return [];
     }
@@ -168,7 +171,7 @@ function loadStorage() {
 
 function updateStorage(new_entry) {
 
-    var scores = loadStorage();
+    var scores = loadStorage(keyName);
     var new_score = {
         initials: new_entry.initials,
         score: new_entry.score
@@ -183,7 +186,7 @@ function updateStorage(new_entry) {
 
 // To view high scores
 btnscores.addEventListener("click", function() {
-
+    
     // Erase all content
     hide.style.display = 'none';
     wrapper.style.display = 'none';
@@ -195,7 +198,8 @@ btnscores.addEventListener("click", function() {
     allScoresTitle.style.display = 'flex';
     allScores.style.display = 'flex';
     goBack.style.display = 'flex';
-    clearHighScores.style.display = 'flex'; 
+    clearHighScores.style.display = 'flex';
+    viewHighScores();
 
 });
 
@@ -208,10 +212,16 @@ goBack.addEventListener('click', function() {
 
 // Save initials and final score in local storage
 enterbtn.addEventListener("click", function() {
-    
+
     // Save the initials and final score into local storage
     var initials = localStorage.setItem('initials', input.value);
     var fScore = localStorage.setItem("FinalScore", finalScore);
+
+    var object = {
+        initials: input.value,
+        score: secondsLeft,
+    }
+    updateStorage(object);
 
 
 
@@ -232,8 +242,6 @@ startQuiz.addEventListener("click", function() {
 
 formFunc();
 questionsFunc();
-console.log(finalScore);
-
     
       
 
