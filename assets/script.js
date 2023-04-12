@@ -217,11 +217,8 @@ clearHighScores.addEventListener('click', function() {
 enterbtn.addEventListener("click", function() {
 
     // Save the initials and final score into local storage
-
-    
+   
     updateStorage();
-
-
 
 });
 
