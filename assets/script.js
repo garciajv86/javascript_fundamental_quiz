@@ -214,11 +214,15 @@ clearHighScores.addEventListener('click', function() {
 })
 
 // Save initials and final score in local storage
-enterbtn.addEventListener("click", function() {
+enterbtn.addEventListener("click", function(event) {
+
+    event.preventDefault();
 
     // Save the initials and final score into local storage
    
     updateStorage();
+
+    location.reload();
 
 });
 
