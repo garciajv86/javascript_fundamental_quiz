@@ -28,6 +28,9 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and my score
 ```
+## Link
+
+[JavaScript Fundamentals Quiz](https://garciajv86.github.io/javascript_fundamental_quiz/)
 
 ## ScreenShot
 
